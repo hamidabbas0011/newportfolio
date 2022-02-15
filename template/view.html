@@ -1,10 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-3">
+            <div class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ product.image.url }}" class="w-100" alt="">
+                    </div>
+                    {% if product.imageSS1 %}
+                        <div class="carousel-item active">
+                            <img src="{{ product.imageSS1.url }}" class="w-100" alt="">
+                        </div>
+                    {% endif %}
+
+                    {% if product.imageSS2 %}
+                        <div class="carousel-item active">
+                            <img src="{{ product.imageSS2.url }}" class="w-100" alt="">
+                        </div>
+                    {% endif %}
+
+                    {% if product.imageSS3 %}
+                        <div class="carousel-item active">
+                            <img src="{{ product.imageSS3.url }}" class="w-100" alt="">
+                        </div>
+                    {% endif %}
+
+                    {% if product.imageSS4 %}
+                        <div class="carousel-item active">
+                            <img src="{{ product.imageSS4.url }}" class="w-100" alt="">
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+                <div class="col-9">
+                    <table class="table">
+                        <tr>
+                            <th>Title</th>
+                            <td>{{product.name}}</td>
+                        </tr>
+                        <tr>
+                            <th>Category</th>
+                            <td>{{product.category}}</td>
+                        </tr>
+                        <tr>
+                            <th>Software Used</th>
+                            <td>{{product.softwareUsed}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border border-dark">
+                        <div class="card-header bg-dark text-white">
+                            Description
+                        </div>
+                        <div class="card-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam asperiores, assumenda commodi dicta ducimus facilis, magni nam optio porro quaerat quam quasi quod sunt tempore vel vitae! Debitis, nesciunt.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

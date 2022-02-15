@@ -14,6 +14,7 @@
                     </div>
                 </div>
                 <div class="row g-2">
+                    {% if product %}
                     {% for p in product %}
                         <div class="col-4">
                         <div class="card mb-1">
@@ -24,11 +25,19 @@
                                 <p class="small">
                                     {{p.description}}
                                 </p>
-                                <a href="" class="btn btn-success">Know More</a>
+                                <a href="{% url 'viewCard' p.pro_id %}" class="btn btn-success">Know More</a>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
+                    {% else %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>No Record Available Yet</h5>
+                        </div>
+                    </div>
+
+                    {% endif %}
                 </div>
             </div>
             <div class="col-3 mt-4">
@@ -36,8 +45,19 @@
                     <a href="" class="list-group-item list-group-item-action active">Category</a>
                     {% for x in category %}
                         <a href="{% url 'category' x.cat_id %}" class="list-group-item list-group-item-action">{{x.cat_title}}</a>
+                           {% if filters %}
+                            <div class="list-group">
+                                {% for f in x.filter_set.all %}
+                                    <a href="{% url 'category' x.cat_id f.id %}" class=" list-group-item list-group-item-action"> &raquo; {{ f.filter_title }}</a>
+                                {% endfor %}
+                            </div>
+                           {% endif %}
+
                     {% endfor %}
                 </div>
+
+
+
             </div>
         </div>
     </div>
